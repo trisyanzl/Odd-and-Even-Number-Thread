@@ -24,7 +24,7 @@ void PrintOdd()
         std::unique_lock<std::mutex> locker(mu);        //bilangan akan dikunci pada thread ini untuk memblokir akses thread lain
         cond.wait(locker, []() { return (count % 2 == 1); });       //menunggu kondisi bilangan yang jika dibagi 2 ada sisa dan kemudian akan dikembalikan (diprint)
         timer(1);       //memberi timer atau delay pada bilangan yang akan dicetak
-        std::cout << "From Odd:    " << count << std::endl;         //cetak bilangan ganjil
+        std::cout << "Thread 1 Odd :        " << count << std::endl;         //cetak bilangan ganjil
         count++;        //bilangan terus berjalan menuju bilangan selanjutnya
         locker.unlock();    //membuka kunci dari thread ini agar bilangan yang bukan ganjil dapat diakses di thread lain
         cond.notify_all();  //membuka blokir semua thread yang sedang menunggu kondisi ini
@@ -39,7 +39,7 @@ void PrintEven()
         std::unique_lock<std::mutex> locker(mu);         //bilangan akan dikunci pada thread ini untuk memblokir akses thread lain
         cond.wait(locker, []() { return (count % 2 == 0); });       //menunggu kondisi bilangan yang jika dibagi 2 = 0 dan kemudian akan dikembalikan (diprint)
         timer(3);       //memberi timer atau delay pada bilangan yang akan dicetak
-        std::cout << "From Even: " << count << std::endl;           //cetak bilangan ganjil
+        std::cout << "Thread 2 Even :   " << count << std::endl;           //cetak bilangan ganjil
         count++;            //bilangan terus berjalan menuju bilangan selanjutnya
         locker.unlock();        //membuka kunci dari thread ini agar bilangan yang bukan genap dapat diakses di thread lain
         cond.notify_all();      //membuka blokir semua thread yang sedang menunggu kondisi ini

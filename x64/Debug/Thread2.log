@@ -1,3 +1,2 @@
 ﻿  Thread2.cpp
-E:\Jaringan Komputer\Thread2\Thread2\Thread2.cpp(41,15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Thread2.vcxproj -> E:\Jaringan Komputer\Thread2\x64\Debug\Thread2.exe
